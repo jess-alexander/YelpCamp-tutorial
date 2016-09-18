@@ -6,7 +6,7 @@
 <!-- remove styling and place in .css file -->        
         <div style ="width: 40%; margin: 35px auto;">
 <!-- remove styling and place in .css file -->            
-            <form action = "/campgrounds/<%=campground._id%>/edit?_method=PUT" method = "POST">
+            <form action = "/campgrounds/<%=campground._id%>?_method=PUT" method = "POST">
                 <div class="form-group">
                     <input class = "form-control" type = "text" name = "campground[name]" value = "<%= campground.name %>" >
                 </div>

@@ -110,8 +110,9 @@ router.put("/:id", function(req, res) {
         if (err) {
             console.log("UPDATE ROUTE   /campgrounds");
             console.log(err);
+            res.redirect("/campgrounds");
         } else {
-            res.render("campgrounds/" + req.params.id); //display updated
+            res.redirect("/campgrounds/" + req.params.id); //display updated
         }
     });
 
