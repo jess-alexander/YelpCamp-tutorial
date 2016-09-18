@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YelpCamp App</title>
+        <link rel = "stylesheet" type="text/css" href = "/stylesheets/main.css">
+        <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <!-- make sure to include the '/' in the URL so the server can find the css file-->
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+        
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">YelpCamp</a>
+            </div>
+        
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <%  if (!currentUser){%>
+                  <li><a href="/login">Login</a></li>
+                  <li><a href="/register">Sign Up</a></li> 
+                 <%} else { %> 
+                  <li><a> Signed In As <%= currentUser.username%></a></li> <!-- could be a link to a profile page, if we had one.. -->
+                  <li><a href="/logout">Logout</a></li> 
+                <% }%> 
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>

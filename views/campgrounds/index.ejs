@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+
+<div class = "container">
+    <header class = "jumbotron">
+        <div class = "container">
+            <h1> Welcome to <br> Jess's Camping Collection! </h1>    
+            <p> View our hand-picked campgrounds from all over the world </p>
+            <p>Don't see your favorite campground?</p>
+            <p><!-- Placing inside a paragraph for spacing-->
+                <a class = " btn btn-primary btn-large" href = "/campgrounds/new"> Add a Campground </a> 
+            </p>
+        </div>
+    </header>
+    
+    <h3>Our Most Popular Campgrounds</h3>
+        
+    <div class = "row text-center" style = "display:flex; flex-wrap: wrap;"> 
+<!-- remove styling and place in .css file -->    
+        <% campgrounds.forEach(function(campground){ %>
+            <div class = "col-md-3 col-sm-6">
+                <div class = "thumbnail">
+                    <a href = "/campgrounds/<%= campground._id%>">
+                        <img src=" <%= campground.image %>">
+                    </a>    
+                    <div class = "caption">
+                        <h4><%= campground.name %></h4>        
+                    </div> <!-- close caption -->
+                    <p>
+                        <a href = "/campgrounds/<%= campground._id%>" class = "btn btn-primary">More info</a>
+                    </p>
+                </div> <!-- close thumbnail -->
+            </div><!-- close col -->
+        <% }); %> <!-- close forEach -->
+    </div> <!-- close row -->
+</div> <!-- close container -->
+
+
+<% include ../partials/footer %>
