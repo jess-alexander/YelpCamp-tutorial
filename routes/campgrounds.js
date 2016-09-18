@@ -68,19 +68,17 @@ router.get("/new", isLoggedIn, function(req, res) { //following RESTful naming c
 //must be defined AFTER new route - the syntax for new and id are the same
 router.get("/:id", function(req, res) {
 
-    console.log("req.body: " + req.body);
-
     //find campground with provided ID
-    // Campground.findById(req.params.id, req.body.campground).populate("comments").exec(function(err, foundCampground) {
-    //     if (err) {
-    //         console.log("SHOW ROUTE   /campgrounds:id");
-    //         console.log(err);
-    //     } else {
-    //         //render show template with that campground
+    Campground.findById(req.params.id, req.body.campground).populate("comments").exec(function(err, foundCampground) {
+        if (err) {
+            console.log("SHOW ROUTE   /campgrounds:id");
+            console.log(err);
+        } else {
+            //render show template with that campground
 
-    //         res.render("campgrounds/show", { campground: foundCampground });
-    //     }
-    // })
+            res.render("campgrounds/show", { campground: foundCampground });
+        }
+    })
 
 });
 
@@ -90,7 +88,6 @@ router.get("/:id", function(req, res) {
 //  EDIT ROUTE    //  -- ADD NEW CAMPGROUND TO DATABaSE 
 // ///////////////////
 router.get("/:id/edit", function(req, res) {
-    // res.render("campgrounds/edit");
 
     Campground.findById(req.params.id, function(err, foundCampground) { //get ALL CAMPGROUND from DB
         if (err) {
@@ -100,7 +97,6 @@ router.get("/:id/edit", function(req, res) {
             res.render("campgrounds/edit", { campground: foundCampground });
         }
     });
-
 
 });
 
