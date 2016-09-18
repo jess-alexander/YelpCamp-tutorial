@@ -106,16 +106,15 @@ router.get("/:id/edit", function(req, res) {
 // ///////////////////
 router.put("/:id", function(req, res) {
     //find and update the correct campground
-
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground) { //get ALL CAMPGROUND from DB
         if (err) {
-            console.log("EDIT ROUTE   /campgrounds");
+            console.log("UPDATE ROUTE   /campgrounds");
             console.log(err);
         } else {
-            res.render("campgrounds/edit", { campground: updatedCampground });
+            res.render("campgrounds/" + req.params.id); //display updated
         }
     });
-    //display updated
+
 });
 
 
