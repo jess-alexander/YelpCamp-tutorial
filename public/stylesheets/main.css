@@ -24,3 +24,8 @@ h1.new-edit {
     width: 40%;
     margin: 35px auto;
 }
+
+#campground-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
