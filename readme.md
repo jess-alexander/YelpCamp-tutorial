@@ -142,3 +142,8 @@ CREATE  /campgrounds/:id/comments       POST
 * add link to edit page
 * add update Routes
 * fix $set problem
+
+# Authorization (figure out what they are allowed to do)
+* User can only edit his/her campgrounds
+* User can only delete his/her campgrounds
+* Hide/Show edit and delete button

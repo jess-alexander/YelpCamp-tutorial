@@ -89,16 +89,34 @@ router.get("/:id", function(req, res) {
 // ///////////////////
 router.get("/:id/edit", function(req, res) {
 
-    Campground.findById(req.params.id, function(err, foundCampground) { //get ALL CAMPGROUND from DB
-        if (err) {
-            console.log("EDIT ROUTE   /campgrounds");
-            console.log(err);
-        } else {
-            res.render("campgrounds/edit", { campground: foundCampground });
-        }
-    });
+    if (req.isAuthenticated()) { //is user logged in?
+        Campground.findById(req.params.id, function(err, foundCampground) { //get ALL CAMPGROUND from DB
+            if (err) {
+                console.log("EDIT ROUTE   /campgrounds");
+                console.log(err);
+            } else {
+                // does user own the campground
+                //if(campground.author._id === req.user._id){}
+                console.log("campground.auth.id: " + campground.author.id);
+                console.log("req.user._id: " + req.user._id);
 
+                res.render("campgrounds/edit", { campground: foundCampground });
+            }
+        });
+    } else {
+        console.log("YOU NEED TO BE LOGGED IN TO DO THAT");
+        res.send("YOU NEED TO BE LOGGED IN TO DO THAT"); // if not, redirect
+
+    }
 });
+
+
+
+// } else {
+//         }
+
+//         // otherwise redirect
+
 
 
 // ///////////////////
