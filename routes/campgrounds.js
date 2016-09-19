@@ -97,7 +97,7 @@ router.get("/:id/edit", function(req, res) {
             } else {
                 // does user own the campground
                 //if(campground.author._id === req.user._id){}
-                console.log("campground.auth.id: " + campground.author.id);
+                console.log("campground.auth.id: " + foundCampground.author.id);
                 console.log("req.user._id: " + req.user._id);
 
                 res.render("campgrounds/edit", { campground: foundCampground });
