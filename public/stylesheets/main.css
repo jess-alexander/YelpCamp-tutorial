@@ -15,3 +15,12 @@ div.thumbnail {
 #delete-form {
     display: inline;
 }
+
+h1.new-edit {
+    text-align: center;
+}
+
+.new-edit.form-wrapper {
+    width: 40%;
+    margin: 35px auto;
+}
