@@ -142,3 +142,7 @@ CREATE  /campgrounds/:id/comments       POST
 * add link to edit page
 * add update Routes
 * fix $set problem
+
+# Deleting Campgrounds
+* Add Destroy Route
+* Add Delete Button

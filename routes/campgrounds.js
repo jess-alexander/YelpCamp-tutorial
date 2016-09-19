@@ -71,7 +71,7 @@ router.get("/:id", function(req, res) {
     //find campground with provided ID
     Campground.findById(req.params.id, req.body.campground).populate("comments").exec(function(err, foundCampground) {
         if (err) {
-            console.log("SHOW ROUTE   /campgrounds:id");
+            console.log("Error at SHOW ROUTE   /campgrounds:id");
             console.log(err);
         } else {
             //render show template with that campground
@@ -117,6 +117,22 @@ router.put("/:id", function(req, res) {
     });
 
 });
+
+
+// ///////////////////
+//  DESTROY ROUTE    //  -- REMOVE CAMPGROUND FROMT DATABaSE 
+// ///////////////////
+router.delete("/:id", function(req, res) {
+    Campground.findByIdAndRemove(req.params.id, function(err) {
+        if (err) {
+            console.log("DELETE CAMPGROUND ERROR");
+            res.send("/campgrounds");
+        } else {
+            res.redirect("/campgrounds");
+        };
+    });
+});
+
 
 
 // ///////////////////
