@@ -4,9 +4,10 @@ var Campground = require("../models/campground");
 var Comment = require("../models/comment");
 
 
-// ///////////////////
-// -- SHOW FORM TO CREATE NEW CAMPGROUND
-// ///////////////////
+
+// /////////////////////// // 
+//  COMMENT NEW  ROUTE     // 
+// /////////////////////// //
 router.get("/new", isLoggedIn, function(req, res) { //following RESTful naming convention 
     Campground.findById(req.params.id, function(err, campground) {
         console.log(req.params.id);
@@ -19,7 +20,10 @@ router.get("/new", isLoggedIn, function(req, res) { //following RESTful naming c
     })
 });
 
-//Comments Create
+
+// /////////////////////// // 
+//  COMMENT CREATE ROUTE   // 
+// /////////////////////// //
 router.post("/", isLoggedIn, function(req, res) {
     Campground.findById(req.params.id, function(err, campgroundReturned) { //lookup campground using ID
         if (err) {
@@ -47,8 +51,10 @@ router.post("/", isLoggedIn, function(req, res) {
 });
 
 
-//Comments Create
 
+// /////////////////////// // 
+//  COMMENT EDIT ROUTE   // 
+// /////////////////////// //
 router.get("/:comment_id/edit", function(req, res) {
     Comment.findById(req.params.comment_id, function(err, foundComment) {
         if (err) {
@@ -60,7 +66,10 @@ router.get("/:comment_id/edit", function(req, res) {
     });
 });
 
-//comment update
+
+// /////////////////////// // 
+//  COMMENT UPDATE ROUTE   // 
+// /////////////////////// // 
 router.put("/:comment_id/", function(req, res) {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, UpdatedComment) {
         if (err) {
@@ -71,6 +80,13 @@ router.put("/:comment_id/", function(req, res) {
     });
 });
 
+
+// /////////////////////// // 
+//  COMMENT DESTROY ROUTE  // 
+// /////////////////////// //
+router.delete("/:comment_id", function(res, req) {
+    res.send("you have reached the delete route");
+});
 
 
 // ///////////////////
