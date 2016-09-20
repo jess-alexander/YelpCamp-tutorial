@@ -46,6 +46,9 @@ router.post("/", isLoggedIn, function(req, res) {
     });
 });
 
+
+//Comments Create
+
 router.get("/:comment_id/edit", function(req, res) {
     Comment.findById(req.params.comment_id, function(err, foundComment) {
         if (err) {
@@ -57,7 +60,10 @@ router.get("/:comment_id/edit", function(req, res) {
     });
 });
 
-
+//comment update
+router.put("/:comment_id/", function(req.res) {
+    res.send("you hit the update route for comment");
+});
 
 
 
