@@ -121,7 +121,7 @@ router.put("/:id", function(req, res) {
 // ///////////////////
 //  DESTROY ROUTE    //  -- REMOVE CAMPGROUND FROMT DATABaSE 
 // ///////////////////
-router.delete("/:id", function(req, res) {
+router.delete("/:id", checkCampgroundOwnership, function(req, res) {
     Campground.findByIdAndRemove(req.params.id, function(err) {
         if (err) {
             console.log("DELETE CAMPGROUND ERROR");
