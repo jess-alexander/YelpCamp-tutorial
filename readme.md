@@ -157,12 +157,21 @@ CREATE  /campgrounds/:id/comments       POST
 * Add Edit Button
 * Add Update Route
 
-campground/:id/edit <-- campground edit route
-campground/:id/comments/:comment_id/edit <-- nested comment route
+<!-- 
+    campground/:id/edit <-- campground edit route
+    campground/:id/comments/:comment_id/edit <-- nested comment route
+ -->
 
-# Deleteing Comments
+# Deleting Comments
 * Add Destroy Route
 * Add Delete Button
+
+
+<!-- 
+destroy comment route
+    campground/:id/edit <-- campground edit route
+    campground/:id/comments/:comment_id/ <-- nested comment route (as a delete request)
+ -->
 
 # Authorization (figure out what they are allowed to do)
 * User can only edit his/her comments
