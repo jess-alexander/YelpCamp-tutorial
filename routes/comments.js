@@ -84,7 +84,7 @@ router.put("/:comment_id/", function(req, res) {
 // /////////////////////// // 
 //  COMMENT DESTROY ROUTE  // 
 // /////////////////////// //
-router.delete("/:comment_id", function(res, req) {
+router.delete("/:comment_id", function(req, res) {
     res.send("you have reached the delete route");
 });
 
