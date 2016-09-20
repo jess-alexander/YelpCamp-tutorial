@@ -151,3 +151,20 @@ CREATE  /campgrounds/:id/comments       POST
 * User can only edit his/her campgrounds
 * User can only delete his/her campgrounds
 * Hide/Show edit and delete button
+
+# Editing Comments
+* Add Edit Route for Comments
+* Add Edit Button
+* Add Update Route
+
+campground/:id/edit <-- campground edit route
+campground/:id/comments/:comment_id/edit <-- nested comment route
+
+# Deleteing Comments
+* Add Destroy Route
+* Add Delete Button
+
+# Authorization (figure out what they are allowed to do)
+* User can only edit his/her comments
+* User can only delete his/her comments
+* Hide/Show edit and delete button
