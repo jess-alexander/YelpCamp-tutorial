@@ -85,7 +85,15 @@ router.put("/:comment_id/", function(req, res) {
 //  COMMENT DESTROY ROUTE  // 
 // /////////////////////// //
 router.delete("/:comment_id", function(req, res) {
-    res.send("you have reached the delete route");
+    Comment.findByIdAndRemove(req.params.comment_id, function(err) {
+        if (err) {
+            console.log("error in comment delete route");
+            res.redirect("back");
+        } else {
+            res.redirect("/campgrounds" + req.params.id);
+        }
+
+    });
 });
 
 
