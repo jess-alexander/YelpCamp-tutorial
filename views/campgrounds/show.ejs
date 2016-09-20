@@ -31,7 +31,7 @@
 					<% if (currentUser && campground.author.id.equals(currentUser._id)){ %> 
 					<!-- currentUser available from app.js line "res.locals.currentUser = req.user;" -->
 					<a class = "btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit Campground Details</a>
-					<form id = "delete-form" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="post">
+					<form class = "delete-form" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="post">
 						<button class = "btn btn-danger">Delete</button>
 					</form>
 					<% } %>
@@ -55,7 +55,10 @@
 								href="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/edit">
 								Edit Comment
 							</a>
-
+							<form  class ="delete-form" action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>/?_method=DELETE" method="POST">
+								<!-- <button class="btn btn-xs btn-danger">Delete Comment</button> -->
+								<input type="submit" class="btn btn-xs btn-danger" value="Delete Comment">
+							</form>
 						</div>
 					</div>
 				<% }) %>
