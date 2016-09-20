@@ -157,6 +157,9 @@ CREATE  /campgrounds/:id/comments       POST
 * Add Edit Button
 * Add Update Route
 
+campground/:id/edit <-- campground edit route
+campground/:id/comments/:comment_id/edit <-- nested comment route
+
 # Deleteing Comments
 * Add Destroy Route
 * Add Delete Button
