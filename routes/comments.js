@@ -90,7 +90,7 @@ router.delete("/:comment_id", function(req, res) {
             console.log("error in comment delete route");
             res.redirect("back");
         } else {
-            res.redirect("/campgrounds" + req.params.id);
+            res.redirect("/campgrounds/" + req.params.id);
         }
 
     });
