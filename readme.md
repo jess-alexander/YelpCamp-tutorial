@@ -146,3 +146,8 @@ CREATE  /campgrounds/:id/comments       POST
 # Deleting Campgrounds
 * Add Destroy Route
 * Add Delete Button
+
+# Authorization (figure out what they are allowed to do)
+* User can only edit his/her campgrounds
+* User can only delete his/her campgrounds
+* Hide/Show edit and delete button

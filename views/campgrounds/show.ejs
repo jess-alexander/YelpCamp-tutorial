@@ -28,10 +28,13 @@
 							<%}%>
 						</em>
 					</p>
+					<% if (currentUser && campground.author.id.equals(currentUser._id)){ %> 
+					<!-- currentUser available from app.js line "res.locals.currentUser = req.user;" -->
 					<a class = "btn btn-warning" href="/campgrounds/<%=campground._id%>/edit">Edit Campground Details</a>
 					<form id = "delete-form" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="post">
 						<button class = "btn btn-danger">Delete</button>
 					</form>
+					<% } %>
 				</div>
 			</div>				
 			<div class = "well">
