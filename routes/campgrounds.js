@@ -148,7 +148,7 @@ function checkCampgroundOwnership(req, res, next) {
     if (req.isAuthenticated()) { //is user logged in?
         Campground.findById(req.params.id, function(err, foundCampground) { //get ALL CAMPGROUND from DB
             if (err) {
-                console.log("EDIT ROUTE   /campgrounds");
+                console.log("Error: checkCampgroundOwnership middleware");
                 console.log(err);
             } else {
                 if (foundCampground.author.id.equals(req.user.id)) { // does user own the campground

@@ -45,28 +45,28 @@ each campground has:
 #Show Page
 * review the RESTful routes we've seen so far
     * 7 restful routes
-        * 
+    
 * Add description to our campground model
     * (so we have something to show when user clicked on a campground)
 * Show db.collection.drop()
     * clear all campground data and start fresh to include description rather than update each campground in the DB.
 * Add a show route/template
-* 
 
-#RESTFUL ROUTES
 
-Name    URL         Verb   Desription
+##RESTFUL ROUTES
+
+<!-- Name    URL         Verb   Desription
  ==========================================
 INDEX   /dogs       GET     Display a list of all dogs
 NEW     /dog/new    GET     Display a form to make a new dog
 CREATE  /dogs       POST    Add a new dog to DB
 SHOW    /dogs/:id   GET     Shows info about one dog
-
+ -->
 
 #Refactor Mongoose Code
 * Create a models directory
 * Use model.exports
-* Requres everything correctly :) 
+* Requires everything correctly 
 
 # Add Seeds File
 * Add a seeds.js file
@@ -82,7 +82,7 @@ SHOW    /dogs/:id   GET     Shows info about one dog
 * Add the new comment form
 
 #RESTFUL ROUTES
-
+<!-- 
 Name    URL         Verb   Desription
  ==========================================
 INDEX   /dogs       GET     Display a list of all dogs
@@ -90,7 +90,7 @@ NEW     /dog/new    GET     Display a form to make a new dog
 CREATE  /dogs       POST    Add a new dog to DB
 SHOW    /dogs/:id   GET     Shows info about one dog
 
-
+ -->
 *LINK COMMENTS TO CAMPGROUND -- nested route*
 NEW     /campgrounds/:id/comments/new   GET   
 CREATE  /campgrounds/:id/comments       POST
@@ -101,7 +101,7 @@ CREATE  /campgrounds/:id/comments       POST
 * display comments nicely
 
 
-**Authentication**
+##Authentication
 # Add User Model -- auth part 1
 * Install all packaged needed for auth
 * Define User Model
@@ -173,7 +173,7 @@ destroy comment route
     campground/:id/comments/:comment_id/ <-- nested comment route (as a delete request)
  -->
 
-# Authorization (figure out what they are allowed to do)
+# Authorization Part 2: Comments
 * User can only edit his/her comments
 * User can only delete his/her comments
 * Hide/Show edit and delete button
