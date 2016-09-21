@@ -177,3 +177,8 @@ destroy comment route
 * User can only edit his/her comments
 * User can only delete his/her comments
 * Hide/Show edit and delete button
+
+# Adding in Flash
+* Demo working version
+* Install and configure connect-flash
+* Add bootstrap alerts to header
