@@ -173,7 +173,7 @@ destroy comment route
     campground/:id/comments/:comment_id/ <-- nested comment route (as a delete request)
  -->
 
-# Authorization (figure out what they are allowed to do)
+# Authorization Part 2: Comments
 * User can only edit his/her comments
 * User can only delete his/her comments
 * Hide/Show edit and delete button
