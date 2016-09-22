@@ -12,6 +12,7 @@ var express = require("express"),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     methodOverride = require("method-override"),
+    flash = require("connect-flash"),
     // models    
     Campground = require("./models/campground.js"),
     Comment = require("./models/comment.js"),
@@ -23,35 +24,35 @@ var commentRoutes = require("./routes/comments.js"),
     campgroundRoutes = require("./routes/campgrounds.js"),
     indexRoutes = require("./routes/index.js");
 
-
-// app.use will call these functions on every route
-mongoose.connect("mongodb://localhost/yelp_camp_v9"); //create/connect DB
-app.use(bodyParser.urlencoded({ extended: true })); //parse form data
-app.set("view engine", "ejs"); //pages will all have .ejs 
-app.use(express.static(__dirname + "/public")); //serve the contents in the public directory (mandatory for styling)
-// seedDB();  //seed database
-app.use(methodOverride("_method"));
-
 //passport config
 app.use(require("express-session")({
     secret: "I'm gonna nail this programming thing",
     resave: false,
     saveUninitialized: false
 }));
-
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate())); // User.authenticate comes with the passport plugin inside user.js
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+app.use(flash()); //requires sessions, place below passport config
+//end passport config
 
-
+// app.use will call these functions on every route
+mongoose.connect("mongodb://localhost/yelp_camp_v9"); //create/connect DB
+// seedDB();  //seed database
+app.use(bodyParser.urlencoded({ extended: true })); //parse form data
+app.set("view engine", "ejs"); //pages will all have .ejs
+app.use(express.static(__dirname + "/public")); //serve the contents in the public directory (mandatory for styling)
+app.use(methodOverride("_method"));
 app.use(function(req, res, next) { //middleware for every route
     res.locals.currentUser = req.user; // whatever we put inside res.locals is available on every template
+    res.locals.message = req.flash("error"); //error message needs to be available from the header on every template
     next();
 });
 
 
+//set up RESTFUL Routing shortcut
 app.use('/', indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
