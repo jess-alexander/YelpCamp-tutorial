@@ -8,7 +8,7 @@ middlewareObj.isLoggedIn = function(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    req.flash("error", "Please Login First"); //"error" is the key, the second argument is the error message
+    req.flash("error", "You need to be logged in to do that. Please, Login."); //"error" is the key, the second argument is the error message
     // the above line doesn't display anything. It will be displayed on the next page (the page we redirect to). 
     // the values passed in will not persist; once they have been displayed once they go away. 
     res.redirect("/login");
@@ -18,17 +18,21 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
     if (req.isAuthenticated()) { //is user logged in?
         Campground.findById(req.params.id, function(err, foundCampground) { //get ALL CAMPGROUND from DB
             if (err) {
-                console.log("EDIT ROUTE   /campgrounds");
+                console.log("error within checkCommentOwnership middleware");
                 console.log(err);
+                req.flash("error", "Campground Not Found");
+                res.redirect("back");
             } else {
                 if (foundCampground.author.id.equals(req.user.id)) { // does user own the campground
                     next();
                 } else {
+                    req.flash("error", "You don't have permission to do that");
                     res.redirect("back");
                 }
             }
         });
     } else {
+        req.flash("error", "You need to be logged in to do that. Please, Login.");
         res.redirect("back"); //take user to the previous page
     }
 };
