@@ -47,7 +47,8 @@ app.use(express.static(__dirname + "/public")); //serve the contents in the publ
 app.use(methodOverride("_method"));
 app.use(function(req, res, next) { //middleware for every route
     res.locals.currentUser = req.user; // whatever we put inside res.locals is available on every template
-    res.locals.message = req.flash("error"); //error message needs to be available from the header on every template
+    res.locals.error = req.flash("error"); //error message needs to be available from the header on every template
+    res.locals.success = req.flash("success");
     next();
 });
 
