@@ -8,6 +8,9 @@ middlewareObj.isLoggedIn = function(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
+    req.flash("error", "Please Login First"); //"error" is the key, the second argument is the error message
+    // the above line doesn't display anything. It will be displayed on the next page (the page we redirect to). 
+    // the values passed in will not persist; once they have been displayed once they go away. 
     res.redirect("/login");
 };
 
