@@ -26,7 +26,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
                 if (foundCampground.author.id.equals(req.user.id)) { // if user owns the campground, proceed. ;) 
                     next();
                 } else {
-                    req.flash("error", "You don't have permission to do that");
+                    req.flash("error", "You don't have permission to edit");
                     res.redirect("back");
                 }
             }
@@ -40,23 +40,23 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
 middlewareObj.checkCommentOwnership = function(req, res, next) {
     console.log("inside checkCommentOwnership");
     if (req.isAuthenticated()) { //is user logged in?
-        Comment.findById(req.params.comment_id, function(err, foundComment) { //get ALL comment from DB
+        Comment.findById(req.params.comment_id, function(err, foundComment) { //get comment from DB
             if (err) {
                 console.log("Error: checkCommentOwnership middleware");
                 console.log(err);
-            } else {
-                console.log("no error in finding comment");
-                console.log("foundComment.author.id: " + foundComment.author.id);
-                console.log("req.user.id: " + req.user.id);
-
-                if (foundComment.author.id.equals(req.user.id)) { // does user own the comment
+                req.flash("error", "Campground Not Found");
+                res.redirect("back");
+            } else { //found the comment, check ownership
+                if (foundComment.author.id.equals(req.user.id)) {
                     next();
                 } else {
+                    req.flash("error", "You don't have permission to edit");
                     res.redirect("back");
                 }
             }
         });
     } else {
+        req.flash("error", "You need to be logged in to do that.");
         res.redirect("back"); //take user to the previous page
     }
 };
