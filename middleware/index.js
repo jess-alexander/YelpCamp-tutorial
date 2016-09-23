@@ -38,7 +38,6 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
 };
 
 middlewareObj.checkCommentOwnership = function(req, res, next) {
-    console.log("inside checkCommentOwnership");
     if (req.isAuthenticated()) { //is user logged in?
         Comment.findById(req.params.comment_id, function(err, foundComment) { //get comment from DB
             if (err) {

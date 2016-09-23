@@ -29,14 +29,17 @@
         </nav>
 
         <div class = "container">
+            <div class = "alert alert-danger text-center" role="alert">
+              <p class ="flash-msg">testing testing testing. You must be signed in.</p>
+            </div>
           <% if(error && error.length > 0) {%>
             <div class = "alert alert-danger text-center" role="alert">
-              <h3><%= error %></h3>
+              <p class ="flash-msg"><%= error %></p>
             </div>
           <% } %>
           <% if(success && success.length > 0) {%>
             <div class = "alert alert-success text-center" role="alert">
-              <h3><%= success %></h3>
+              <p class ="flash-msg"><%= success %></p>
             </div>
           <% } %>   
         </div>

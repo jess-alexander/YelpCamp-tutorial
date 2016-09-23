@@ -16,16 +16,18 @@ div.thumbnail {
     display: inline;
 }
 
-h1.new-edit {
+.centered-form {
     text-align: center;
-}
-
-.new-edit.form-wrapper {
-    width: 40%;
+    width: 55%;
     margin: 35px auto;
 }
 
 #campground-grid {
     display: flex;
     flex-wrap: wrap;
+}
+
+.flash-msg {
+    font-weight: 700;
+    letter-spacing: .03em;
 }
