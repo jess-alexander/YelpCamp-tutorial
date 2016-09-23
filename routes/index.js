@@ -35,14 +35,12 @@ router.post("/register", function(req, res) {
     var newUser = new User({ username: req.body.username });
     User.register(newUser, req.body.password, function(err, user) { //storing the Username, not the password. The register method will instead store HASH in password's place. 
         if (err) {
-            console.log(err);
             req.flash("error", err.message);
-            res.render("register");
+            return res.render("register");
         } else {
             passport.authenticate("local")(req, res, function() {
                 req.flash("success", "Welcome to YelpCamp " + user.username);
                 res.redirect("/campgrounds");
-
             });
         }
     });
