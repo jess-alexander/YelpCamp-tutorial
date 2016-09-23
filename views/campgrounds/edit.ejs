@@ -1,9 +1,8 @@
 <% include ../partials/header %>
 
 <div class = "container">
-    <div class = "row">
-        <h1 class="new-edit" >Edit <%= campground.name %></h1>  <!-- classes added for styling -->
-        <div class="new-edit form-wrapper">  <!-- classes added for styling -->
+    <div class = "centered-form">
+        <h1>Edit <%= campground.name %></h1> 
             <form action = "/campgrounds/<%=campground._id%>?_method=PUT" method = "POST">
                 <div class="form-group">
                     <input class = "form-control" type = "text" name = "campground[name]" value = "<%= campground.name %>" >
@@ -22,6 +21,5 @@
             </form>
               <a href = "/campgrounds">Back to Campgrounds</a>
             <% include ../partials/footer %>
-        </div> <!-- styling -->
-    </div> <!-- row -->
+    </div> <!-- centered-form -->
 </div><!-- container -->

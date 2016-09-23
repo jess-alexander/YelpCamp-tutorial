@@ -1,25 +1,23 @@
 <% include ../partials/header %>
 
 <div class = "container">
-    <div class = "row">
-        <h1 class="new-edit" >Create A New Campground</h1>  <!-- classes added for styling -->
-        <div class="new-edit form-wrapper">  <!-- classes added for styling -->
-            <form action = "/campgrounds" method = "post">
-                <div class="form-group">
-                    <input class = "form-control" type = "text" name = "name" placeholder = "location name" >
-                </div>
-                <div class = "form-group">
-                    <input class = "form-control" type = "text" name = "image" placeholder = "image URL">
-                </div>
-                <div class = "form-group">
-                    <textarea class = "form-control" name = "description" placeholder = "description" rows = "4" ></textarea>
-                </div>
-                <div class = "form-group">
-                    <button class = "btn btn-large btn-primary btn-block">Submit</button>
-                </div>
-            </form>
-              <a href = "/campgrounds">Back to Campgrounds</a>
-            <% include ../partials/footer %>
-        </div> <!-- styling -->
-    </div> <!-- row -->
+    <div class = "centered-form">
+        <h1>Create A New Campground</h1>  
+        <form action = "/campgrounds" method = "post">
+            <div class="form-group">
+                <input class = "form-control" type = "text" name = "name" placeholder = "location name" >
+            </div>
+            <div class = "form-group">
+                <input class = "form-control" type = "text" name = "image" placeholder = "image URL">
+            </div>
+            <div class = "form-group">
+                <textarea class = "form-control" name = "description" placeholder = "description" rows = "4" ></textarea>
+            </div>
+            <div class = "form-group">
+                <button class = "btn btn-large btn-primary btn-block">Submit</button>
+            </div>
+        </form>
+          <a href = "/campgrounds">Back to Campgrounds</a>
+    </div> <!-- centered-form -->
+    <% include ../partials/footer %>
 </div><!-- container -->
