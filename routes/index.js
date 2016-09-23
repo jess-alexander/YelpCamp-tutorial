@@ -10,7 +10,7 @@ var Comment = require("../models/comment");
 // ///////////////////
 //  Landing ROUTE     //  
 // ///////////////////
-router.get("/", function(req, res){
+router.get("/", function(req, res) {
     res.render("landing");
 });
 
@@ -19,49 +19,57 @@ router.get("/", function(req, res){
 //  Auth routes     // 
 // ///////////////////
 
-//show register form
-router.get("/register", function(req,res){
-  res.render("register");
+
+//--------------------------//
+// // show register form // //
+//--------------------------//
+router.get("/register", function(req, res) {
+    res.render("register");
 });
-//handle sign-up logic
-router.post("/register", function(req,res){
-  var newUser = new User({username: req.body.username});
-  User.register(newUser, req.body.password, function(err, user){   //storing the Username, not the password. The register method will instead store HASH in password's place. 
-    if (err){
-      console.log("Register Post Route");
-      console.log(err);
-      return res.render("register");
-    }
-    passport.authenticate("local")(req, res, function(){
-      res.redirect("/campgrounds");
+
+
+//----------------------------//
+// // handle sign-up logic // //
+//----------------------------//
+router.post("/register", function(req, res) {
+    var newUser = new User({ username: req.body.username });
+    User.register(newUser, req.body.password, function(err, user) { //storing the Username, not the password. The register method will instead store HASH in password's place. 
+        if (err) {
+            req.flash("error", err.message);
+            return res.render("register");
+        } else {
+            passport.authenticate("local")(req, res, function() {
+                req.flash("success", "Welcome to YelpCamp " + user.username);
+                res.redirect("/campgrounds");
+            });
+        }
     });
-  });
-})
-//show login form
-router.get("/login", function(req, res){
-  res.render("login");
 });
-//handle login logic
-router.post("/login", passport.authenticate("local",  //app.post("/something", middleware, callback)
-  {
-    successRedirect:"/campgrounds", 
-    failureRedirect:"/login"
-  }), function(req,res){ });
 
-//logout Route
-router.get("/logout", function(req,res){
-  req.logout();
-  res.redirect("/campgrounds");
+
+//-----------------------//
+// // show login form // //
+//-----------------------//
+router.get("/login", function(req, res) {
+    res.render("login");
+});
+
+
+//--------------------------//
+// // handle login logic // //
+//--------------------------//
+router.post("/login", passport.authenticate("local", { successRedirect: "/campgrounds", failureRedirect: "/login" }), function(req, res) {
+    //router.post("/something", middleware, callback)
+});
+
+
+//--------------------//
+// // logout Route // //
+//--------------------//
+router.get("/logout", function(req, res) {
+    req.logout();
+    res.redirect("/campgrounds");
 })
 
-// ///////////////////
-//  Authentication Middleware      // 
-// ///////////////////
-function isLoggedIn(req, res, next){
-  if(req.isAuthenticated()){
-    return next();
-  }
-  res.redirect("/login");
-}
 
 module.exports = router;

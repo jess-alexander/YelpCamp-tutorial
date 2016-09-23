@@ -27,3 +27,16 @@
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
+
+        <div class = "container">
+          <% if(error && error.length > 0) {%>
+            <div class = "alert alert-danger text-center" role="alert">
+              <h3><%= error %></h3>
+            </div>
+          <% } %>
+          <% if(success && success.length > 0) {%>
+            <div class = "alert alert-success text-center" role="alert">
+              <h3><%= success %></h3>
+            </div>
+          <% } %>   
+        </div>
