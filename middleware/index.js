@@ -8,7 +8,6 @@ middlewareObj.isLoggedIn = function(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
-    req.flash("error", "You need to be logged in to do that. Please, Login."); //"error" is the key, the second argument is the error message
     // the above line doesn't display anything. It will be displayed on the next page (the page we redirect to). 
     // the values passed in will not persist; once they have been displayed once they go away. 
     res.redirect("/login");
@@ -32,7 +31,6 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
             }
         });
     } else {
-        req.flash("error", "You need to be logged in to do that. Please, Login.");
         res.redirect("back"); //take user to the previous page
     }
 };
