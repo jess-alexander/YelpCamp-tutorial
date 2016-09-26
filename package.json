@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "* Add landing page * Add Campgrounds Page that lists all campgrounds *  each campground has:  *name *image",
     "main": "app.js",
+    "engines": {
+        "node": "4.5.0"
+    },
     "dependencies": {
         "body-parser": "^1.15.2",
         "connect-flash": "^0.1.1",
