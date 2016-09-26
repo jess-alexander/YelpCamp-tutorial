@@ -17,7 +17,7 @@ var express = require("express"),
     Campground = require("./models/campground.js"),
     Comment = require("./models/comment.js"),
     User = require("./models/user.js"),
-    port = $PORT;
+    port = process.env.PORT;
 
 //var    seedDB      = require("./seeds.js");  // seed the database
 //modulate routes    
