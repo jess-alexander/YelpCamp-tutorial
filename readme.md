@@ -182,3 +182,5 @@ destroy comment route
 * Demo working version
 * Install and configure connect-flash
 * Add bootstrap alerts to header
+
+# Deploying with Heroku
