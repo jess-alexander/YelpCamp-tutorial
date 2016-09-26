@@ -16,7 +16,8 @@ var express = require("express"),
     // models    
     Campground = require("./models/campground.js"),
     Comment = require("./models/comment.js"),
-    User = require("./models/user.js");
+    User = require("./models/user.js"),
+    port = $PORT;
 
 //var    seedDB      = require("./seeds.js");  // seed the database
 //modulate routes    
@@ -62,6 +63,6 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 // ///////////////////
 //  APP LISTENER    // -- Binds and listens for connections on the specified host and port
 // ///////////////////
-app.listen(3000, function() {
+app.listen(port, function() {
     console.log("YelpCamp app started");
 });
