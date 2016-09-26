@@ -75,7 +75,6 @@ router.get("/:id", function(req, res) {
             console.log(err);
         } else {
             //render show template with that campground
-
             res.render("campgrounds/show", { campground: foundCampground });
         }
     })
