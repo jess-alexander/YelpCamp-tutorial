@@ -1,27 +1,28 @@
 {
-  "name": "yelpcamp_v1",
-  "version": "1.0.0",
-  "description": "* Add landing page * Add Campgrounds Page that lists all campgrounds *  each campground has:  *name *image",
-  "main": "app.js",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "connect-flash": "^0.1.1",
-    "ejs": "^2.4.2",
-    "express": "^4.14.0",
-    "express-session": "^1.14.1",
-    "method-override": "^2.3.6",
-    "mongoose": "^4.5.7",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.0.0"
-  },
-  "devDependencies": {
-    "ejs": "^2.4.2",
-    "express": "^4.14.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Jess Alexander",
-  "license": "ISC"
+    "name": "yelpcamp_v1",
+    "version": "1.0.0",
+    "description": "* Add landing page * Add Campgrounds Page that lists all campgrounds *  each campground has:  *name *image",
+    "main": "app.js",
+    "dependencies": {
+        "body-parser": "^1.15.2",
+        "connect-flash": "^0.1.1",
+        "ejs": "^2.4.2",
+        "express": "^4.14.0",
+        "express-session": "^1.14.1",
+        "method-override": "^2.3.6",
+        "mongoose": "^4.5.7",
+        "passport": "^0.3.2",
+        "passport-local": "^1.0.0",
+        "passport-local-mongoose": "^4.0.0"
+    },
+    "devDependencies": {
+        "ejs": "^2.4.2",
+        "express": "^4.14.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
+    },
+    "author": "Jess Alexander",
+    "license": "ISC"
 }
