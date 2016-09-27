@@ -17,26 +17,13 @@ var express = require("express"),
     Campground = require("./models/campground.js"),
     Comment = require("./models/comment.js"),
     User = require("./models/user.js"),
-    port = process.env.PORT;
-//     ko = require("knockout-froala");
+    port = 5000; //process.env.PORT;
+/////////////////////////////////////////////////////////////////////////
+//  start new databse, create a new user, THEN seed with campgrounds   //
+// var    seedDB      = require("./seeds.js");  // seed the database   //
+// seedDB();                                                           //
+/////////////////////////////////////////////////////////////////////////
 
-// var viewModel = {
-//     comments: ko.observable(),
-//     options: {
-//         // disable wrapping content with paragraphs 
-//         // instead <br> will be used 
-//         enter: $.FroalaEditor.ENTER_DIV,
-
-//         // we like gray! 
-//         theme: 'gray',
-//         toolbarButtons: ['bold', 'italic', 'underline']
-//     }
-// }
-
-// ko.applyBindings(viewModel);
-
-
-//var    seedDB      = require("./seeds.js");  // seed the database
 //modulate routes    
 var commentRoutes = require("./routes/comments.js"),
     campgroundRoutes = require("./routes/campgrounds.js"),
@@ -48,8 +35,11 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.use(new LocalStrategy(User.authenticate())); // User.authenticate comes with the passport plugin inside user.js
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -58,7 +48,6 @@ app.use(flash()); //requires sessions, place below passport config
 
 // app.use will call these functions on every route
 mongoose.connect("mongodb://localhost/yelp_camp_v9"); //create/connect DB
-// seedDB();  //seed database
 app.use(bodyParser.urlencoded({ extended: true })); //parse form data
 app.set("view engine", "ejs"); //pages will all have .ejs
 app.use(express.static(__dirname + "/public")); //serve the contents in the public directory (mandatory for styling)
@@ -81,5 +70,5 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 //  APP LISTENER    // -- Binds and listens for connections on the specified host and port
 // ///////////////////
 app.listen(port, function() {
-    console.log("YelpCamp app started on port: " + port);
+    console.log("Jess's YelpCamp app started on port: " + port);
 });
