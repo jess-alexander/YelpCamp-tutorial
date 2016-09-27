@@ -65,7 +65,7 @@ router.post("/login", function(req, res, next) {
             return next(err);
         }
         if (!user) {
-            req.flash("error", "Authentication failed");
+            req.flash("error", "Authentication Failed, please check your username or password");
             return res.redirect('/login');
         }
 
