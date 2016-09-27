@@ -18,6 +18,23 @@ var express = require("express"),
     Comment = require("./models/comment.js"),
     User = require("./models/user.js"),
     port = process.env.PORT;
+//     ko = require("knockout-froala");
+
+// var viewModel = {
+//     comments: ko.observable(),
+//     options: {
+//         // disable wrapping content with paragraphs 
+//         // instead <br> will be used 
+//         enter: $.FroalaEditor.ENTER_DIV,
+
+//         // we like gray! 
+//         theme: 'gray',
+//         toolbarButtons: ['bold', 'italic', 'underline']
+//     }
+// }
+
+// ko.applyBindings(viewModel);
+
 
 //var    seedDB      = require("./seeds.js");  // seed the database
 //modulate routes    
@@ -64,5 +81,5 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 //  APP LISTENER    // -- Binds and listens for connections on the specified host and port
 // ///////////////////
 app.listen(port, function() {
-    console.log("YelpCamp app started");
+    console.log("YelpCamp app started on port: " + port);
 });
