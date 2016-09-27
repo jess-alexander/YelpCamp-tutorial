@@ -81,5 +81,5 @@ app.use("/campgrounds/:id/comments", commentRoutes);
 //  APP LISTENER    // -- Binds and listens for connections on the specified host and port
 // ///////////////////
 app.listen(port, function() {
-    console.log("YelpCamp app started on port: " + port);
+    console.log("Jess's YelpCamp app started on port: " + port);
 });
