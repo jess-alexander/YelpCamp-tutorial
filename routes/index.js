@@ -73,7 +73,7 @@ router.post("/login", function(req, res, next) {
             if (err) {
                 return next(err);
             }
-            return back();
+            return;
         });
     })(req, res, next);
 });
