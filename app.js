@@ -37,6 +37,8 @@ var express = require("express"),
 
 
 //var    seedDB      = require("./seeds.js");  // seed the database
+// seedDB();  //seed database
+
 //modulate routes    
 var commentRoutes = require("./routes/comments.js"),
     campgroundRoutes = require("./routes/campgrounds.js"),
@@ -48,8 +50,11 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.use(new LocalStrategy(User.authenticate())); // User.authenticate comes with the passport plugin inside user.js
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -58,7 +63,6 @@ app.use(flash()); //requires sessions, place below passport config
 
 // app.use will call these functions on every route
 mongoose.connect("mongodb://localhost/yelp_camp_v9"); //create/connect DB
-// seedDB();  //seed database
 app.use(bodyParser.urlencoded({ extended: true })); //parse form data
 app.set("view engine", "ejs"); //pages will all have .ejs
 app.use(express.static(__dirname + "/public")); //serve the contents in the public directory (mandatory for styling)
