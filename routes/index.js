@@ -73,7 +73,7 @@ router.post("/login", function(req, res, next) {
             if (err) {
                 return next(err);
             }
-            return res.redirect('/users/' + user.username);
+            return next();
         });
     })(req, res, next);
 });
