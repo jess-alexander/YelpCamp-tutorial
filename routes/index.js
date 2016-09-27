@@ -84,6 +84,7 @@ router.post("/login", function(req, res, next) {
 // // logout Route // //
 //--------------------//
 router.get("/logout", function(req, res) {
+    if (req.user) { req.flash("success", "Logout Succesful"); }
     req.logout();
     res.redirect("/campgrounds");
 })
