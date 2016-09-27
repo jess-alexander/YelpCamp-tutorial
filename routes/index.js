@@ -73,7 +73,7 @@ router.post("/login", function(req, res, next) {
             if (err) {
                 return next(err);
             }
-            return;
+            return res.redirect('/campgrounds');
         });
     })(req, res, next);
 });
