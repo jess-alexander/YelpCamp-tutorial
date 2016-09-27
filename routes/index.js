@@ -73,6 +73,7 @@ router.post("/login", function(req, res, next) {
             if (err) {
                 return next(err);
             }
+            req.flash("success", "Welcome Back " + user.username);
             return res.redirect('/campgrounds');
         });
     })(req, res, next);
