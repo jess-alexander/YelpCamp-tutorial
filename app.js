@@ -17,10 +17,12 @@ var express = require("express"),
     Campground = require("./models/campground.js"),
     Comment = require("./models/comment.js"),
     User = require("./models/user.js"),
-    port = process.env.PORT;
-
-//var    seedDB      = require("./seeds.js");  // seed the database
-// seedDB();  //seed database
+    port = 5000; //process.env.PORT;
+/////////////////////////////////////////////////////////////////////////
+//  start new databse, create a new user, THEN seed with campgrounds   //
+// var    seedDB      = require("./seeds.js");  // seed the database   //
+// seedDB();                                                           //
+/////////////////////////////////////////////////////////////////////////
 
 //modulate routes    
 var commentRoutes = require("./routes/comments.js"),
