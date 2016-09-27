@@ -58,8 +58,14 @@ router.get("/login", function(req, res) {
 //--------------------------//
 // // handle login logic // //
 //--------------------------//
-router.post("/login", passport.authenticate("local", { successRedirect: "/campgrounds", failureRedirect: "/login" }), function(req, res) {
-    //router.post("/something", middleware, callback)
+router.post("/login", function(req, res) {
+    passport.authenticate("local", {
+            successFlash: "Welcome Back!",
+            successRedirect: "/campgrounds",
+            failureRedirect: "/login",
+            failtureFlash: true
+        })
+        //router.post("/something", middleware, callback)
 });
 
 
