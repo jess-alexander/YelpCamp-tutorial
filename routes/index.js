@@ -61,9 +61,11 @@ router.get("/login", function(req, res) {
 router.post("/login", function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
         if (err) {
+            req.flash("error", err);
             return next(err);
         }
         if (!user) {
+            req.flash("error", "Authentication failed");
             return res.redirect('/login');
         }
 
