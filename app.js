@@ -46,8 +46,11 @@ passport.deserializeUser(User.deserializeUser());
 app.use(flash()); //requires sessions, place below passport config
 //end passport config
 
+
+//mongoose.connect("mongodb://localhost/yelp_camp_v9"); //create/connect local DB
+mongoose.connect("mongodb://jess:admin@ds041556.mlab.com:41556/jess_yelpcamp"); //create/connect hosted DB (mlab.com)
+
 // app.use will call these functions on every route
-mongoose.connect("mongodb://localhost/yelp_camp_v9"); //create/connect DB
 app.use(bodyParser.urlencoded({ extended: true })); //parse form data
 app.set("view engine", "ejs"); //pages will all have .ejs
 app.use(express.static(__dirname + "/public")); //serve the contents in the public directory (mandatory for styling)
