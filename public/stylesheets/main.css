@@ -4,6 +4,13 @@
     border-top-right-radius: 4px;
 }
 
+/*.thumbnail a>img {
+    height: 200px;
+    width: 220px;
+    overflow: hidden;
+}
+*/
+
 div.thumbnail {
     padding: 0;
 }
